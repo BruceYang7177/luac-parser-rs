@@ -317,7 +317,7 @@ fn lua_header(input: &[u8]) -> IResult<&[u8], LuaHeader, ErrorTree<&[u8]>> {
                     tag(b"\x53"),
                     be_u8,
                     take(6usize), // LUAC_DATA
-                    be_u8,
+                    // be_u8,
                     be_u8,
                     be_u8,
                     be_u8,
@@ -330,7 +330,7 @@ fn lua_header(input: &[u8]) -> IResult<&[u8], LuaHeader, ErrorTree<&[u8]>> {
                     _,
                     format_version,
                     _luac_data,
-                    int_size,
+                    // int_size,
                     size_t_size,
                     instruction_size,
                     _integer_size, // lua_Integer
@@ -342,7 +342,7 @@ fn lua_header(input: &[u8]) -> IResult<&[u8], LuaHeader, ErrorTree<&[u8]>> {
                     lua_version: LUA53,
                     format_version,
                     big_endian: cfg!(target_endian = "big"),
-                    int_size,
+                    int_size: 4,
                     size_t_size,
                     instruction_size,
                     number_size,
